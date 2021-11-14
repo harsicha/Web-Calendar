@@ -1,0 +1,177 @@
+* {
+    font-family: 'Georama', sans-serif;
+}
+
+body {
+    background-color: #1d3557;
+}
+
+.labgrp1:nth-of-type(1) {
+    margin-left: 38px;
+    padding-right: 0.3rem;
+}
+
+.labgrp1:nth-of-type(2) {
+    margin-left: 1rem;
+    padding-right: 0.3rem;
+}
+
+#sp {
+	color: #f1faee;
+	margin-left: 2rem;
+	font-weight: bold;
+}
+
+#month, #year, option {
+    margin-top: 6px;
+    background-color: #f1faee;
+    font-weight: bold;
+}
+
+select {
+    border: 2px solid #a8dadc;
+    border-radius: 10px;
+}
+
+select:hover {
+    border-color: #318CE7;
+    transition: border-color 0.5s;
+}
+
+.labgrp1 {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.labgrp1:hover {
+    color: #318CE7;
+    transition: color 0.5s;
+}
+
+#sect1 {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#div1 {
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 90rem;
+    padding: 0;
+}
+
+button {
+    display: inline-flex;
+    width: 10rem;
+    height: 10rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #f1faee;
+    border-color: #a8dadc;
+    border-style: solid;
+    padding-top: 5px;
+    /* border: none; */
+}
+
+button:hover {
+    border-color: #e63946;
+    background-color: #e63946;
+    transition: background-color 0.5s ease-in;
+}
+
+div:nth-of-type(2n) {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+
+div:nth-of-type(2n - 1) {
+    font-weight: bold;
+}
+
+break {
+    flex-basis: 100%;
+    width: 0px; 
+    height: 0px; 
+    overflow: hidden;
+}
+
+.labgrp1 {
+    color: #a8dadc;
+}
+
+#div2 {
+    display: inline-block;
+}
+
+textarea {
+    resize: none;
+    border: 2px solid #a8dadc;
+    border-radius: 5px;
+}
+
+textarea:hover {
+    border: 2px solid #1d3557;
+    transition: border-color 0.5s;
+}
+
+#sect1 button:nth-of-type(1) {
+    border-top-left-radius: 7px;
+}
+
+#sect1 button:nth-of-type(9) {
+    border-top-right-radius: 7px;
+}
+
+#sect1 button:nth-of-type(28) {
+    border-bottom-left-radius: 7px;
+}
+
+#sect1 button:nth-of-type(27) {
+    border-bottom-right-radius: 7px;
+}
+
+#sect1 button:last-child {
+    border-bottom-right-radius: 7px;
+}
+
+#div3 {
+    width: 100%;
+    text-align: center;
+}
+
+.showbutton {
+    font-size: smaller;
+    width: 115px;
+    height: 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: #f1faee;
+}
+
+.showbutton:hover {
+    border-color: #1d3557;
+    transition: border-color 0.5s;
+    background-color: #f1faee;
+}
+
+#logout {
+	width: 3.8rem;
+	height: 1.9rem;
+	background-color: #f1faee;
+    border-color: #a8dadc;
+    border-style: solid;
+    border-radius: 10%;
+    float: right;
+    margin-right: 2.5rem;
+    font-weight: bold;
+}
+
+#logout:hover {
+    border-color: #318CE7;
+    opacity: 80%;
+    transition: border-color 0.5s;
+    transition: opacity 0.2s;
+}
