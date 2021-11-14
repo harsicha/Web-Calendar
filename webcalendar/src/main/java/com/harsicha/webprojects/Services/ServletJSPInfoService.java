@@ -4,7 +4,11 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.jsp.JspFactory;
 
-// Singleton Thread-safe Design Pattern.
+/**
+ * Singleton class used to generate string containing the Servlet and JSP info.
+ * 
+ * @author harsicha
+ */
 public class ServletJSPInfoService {
 	
 	private static ServletJSPInfoService instance;

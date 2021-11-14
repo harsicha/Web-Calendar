@@ -1,15 +1,19 @@
 package com.harsicha.webprojects.Models;
 
-import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Object for storing username and a map of reminders.
+ * 
+ * @author harsicha
+ */
 public class User {
 	
 	private String username;
 	private Map<String, String> reminders;
 	
 	public User() {
-		// this.Reminders = new HashMap<>();
+		
 	}
 	
 	public String getUsername() {

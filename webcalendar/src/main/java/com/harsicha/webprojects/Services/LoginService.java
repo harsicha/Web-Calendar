@@ -11,18 +11,23 @@ import java.sql.SQLException;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class LoginService {
-	
+	/**
+	 * Creates a database entry for username and a hash of username & password.
+	 * 
+	 * @param username String containing username
+	 * @param password String containing this user's password
+	 * 
+	 * @author harsicha
+	 */
 	public User createUser(String username, String password) {
 		User user = new User();
 		if (!checkIfUserExists(username, password)) {
 			try (Connection con = DBCPDataSource.getConnection()) {
 				String passToSHA256 = DigestUtils.sha256Hex(username + password);
-				//Statement st = con.createStatement();
 				PreparedStatement ps = con.prepareStatement("INSERT INTO users VALUES(?, ?)");
 				ps.setString(1, username);
 				ps.setString(2, passToSHA256);
 				ps.executeUpdate();
-				//st.executeUpdate("INSERT INTO users VALUES('" + username + "', '" + passToSHA256 + "');");
 			}
 			catch (SQLException e) {
 				System.out.println("Exception at LoginService: checkIfUserExists method for " + username + ": ");
@@ -35,10 +40,16 @@ public class LoginService {
 		return user;
 	}
 	
+	/**
+	 * Checks if there is already an entry present in the database or not.
+	 * 
+	 * @param username String containing username
+	 * @param password String containing this user's password
+	 * 
+	 * @author harsicha
+	 */
 	private boolean checkIfUserExists(String username, String password) {
 		try (Connection con = DBCPDataSource.getConnection()) {
-			//Statement st = con.createStatement();
-			//ResultSet set = st.executeQuery("select exists(select * from users where username = '" + username + "') as 'EXISTS';");
 			PreparedStatement ps = con.prepareStatement("SELECT EXISTS(SELECT * FROM users WHERE username=?) \"EXISTS\";");
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
@@ -53,12 +64,18 @@ public class LoginService {
 		return false;
 	}
 	
+	/**
+	 * Checks if the password of this user corresponds to the username.
+	 * 
+	 * @param username String containing username
+	 * @param password String containing this user's password
+	 * 
+	 * @author harsicha
+	 */
 	private boolean authenticate(String username, String password) {
 		try (Connection con = DBCPDataSource.getConnection()) {
-			//Statement st = con.createStatement();
 			PreparedStatement ps = con.prepareStatement("SELECT hash FROM users WHERE username=?;");
 			ps.setString(1, username);
-			//ResultSet set = st.executeQuery("select hash from users where username = '" + username + "';");
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			String hash = rs.getString("hash");

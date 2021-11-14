@@ -18,6 +18,11 @@ import jakarta.servlet.annotation.*;
 import jakarta.servlet.jsp.JspFactory;
 /**
  * Servlet implementation class Controller
+ * 
+ * POST method implementation for logging into Web Calendar.
+ * Session management is used to avoid logging in repeatedly.
+ * 
+ * @author harsicha
  */
 
 @WebServlet(description = "LoginController", urlPatterns = {"/Login"} )
@@ -31,6 +36,8 @@ public class LoginController extends HttpServlet {
     }
 
 	/**
+	 * NOT USED FOR LOGIN.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	// READ
@@ -50,6 +57,9 @@ public class LoginController extends HttpServlet {
 	}
 
 	/**
+	 * If login details are valid, creates a session for this user and redirects to Calendar.
+	 * If details are not valid, request is redirected to same page with error attribute.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	// CREATE
@@ -59,13 +69,10 @@ public class LoginController extends HttpServlet {
 		final LoginService service = new LoginService();
 		HttpSession session = request.getSession();
 		
-		System.out.println("Inside Controller!");
-	
 		User user = service.createUser(request.getParameter("username"), request.getParameter("password"));
 		if (user == null) {
 			request.setAttribute("error", "Invalid login, please try again.");
 			request.getRequestDispatcher("/Login/login.jsp").forward(request, response);
-			//response.sendRedirect("/Login/login.jsp");
 			return;
 		}
 		session.setAttribute("user", user);

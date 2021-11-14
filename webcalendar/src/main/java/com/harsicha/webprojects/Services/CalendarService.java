@@ -11,6 +11,15 @@ import com.harsicha.webprojects.Models.DBCPDataSource;
 import com.harsicha.webprojects.Models.User;
 
 public class CalendarService {
+	/**
+	 * Creates a reminder for this user in database.
+	 * 
+	 * @param user Object containing username
+	 * @param reminder Reminder string
+	 * @param date Date for which the reminder is created
+	 * 
+	 * @author harsicha
+	 */
 	public boolean createReminder(User user, String reminder, String date) {
 		try (Connection con = DBCPDataSource.getConnection()) {
 			PreparedStatement ps = con.prepareStatement("INSERT INTO reminders (REMINDER, USERNAME, RDATE) VALUES (?, ?, ?);");
@@ -27,6 +36,13 @@ public class CalendarService {
 		return false;
 	}
 	
+	/**
+	 * Gets all reminders for this user from database.
+	 * 
+	 * @param user Object containing username
+	 * 
+	 * @author harsicha
+	 */
 	public boolean getReminder(User user) {
 		try (Connection con = DBCPDataSource.getConnection()) {
 			PreparedStatement ps = con.prepareStatement("SELECT RDATE, REMINDER FROM reminders WHERE USERNAME=?");

@@ -10,6 +10,11 @@ import java.util.List;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
+/**
+ * Maintains a database connection pool.
+ * 
+ * @author harsicha
+ */
 public class DBCPDataSource {
 	
 	private static BasicDataSource ds = new BasicDataSource();

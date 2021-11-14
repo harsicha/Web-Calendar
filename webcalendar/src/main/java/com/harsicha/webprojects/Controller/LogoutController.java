@@ -13,6 +13,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class LogoutController
+ * 
+ * POST method implementaion for logging user out.
+ * 
+ * @author harsicha
  */
 @WebServlet(description="LogoutController", urlPatterns= {"/Logout"})
 public class LogoutController extends HttpServlet {
@@ -34,6 +38,8 @@ public class LogoutController extends HttpServlet {
 	}
 
 	/**
+	 * Invalidates this session and responds with a JSON containing redirect link to login page.
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

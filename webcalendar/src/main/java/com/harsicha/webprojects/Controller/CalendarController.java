@@ -23,7 +23,9 @@ import jakarta.servlet.annotation.WebServlet;
 
 /**
  * Servlet implementation class CalendarController
- * The class implements GET and POST endpoints for storing and retrieving remindersfrom database
+ * 
+ * The class implements GET and POST endpoints for storing and retrieving reminders from database.
+ * 
  * @author harsicha
  */
 
@@ -47,7 +49,6 @@ public class CalendarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Inside GET of CalendarController");
 		HttpSession hs = request.getSession(false);
 		User user = (User) hs.getAttribute("user");
 		CalendarService service = new CalendarService();
@@ -61,7 +62,7 @@ public class CalendarController extends HttpServlet {
 	}
 
 	/**
-	 * Receives reminder and date attributes from frontend which are then stored in database
+	 * Receives reminder and date attributes from frontend which are then stored in database.
 	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -76,7 +77,6 @@ public class CalendarController extends HttpServlet {
 	    while( (str = br.readLine()) != null ){
 	        sb.append(str);
 	    }    
-	    System.out.println(sb);
 	    
 	    JSONObject jObj = new JSONObject(sb.toString());
 	    System.out.println(jObj);

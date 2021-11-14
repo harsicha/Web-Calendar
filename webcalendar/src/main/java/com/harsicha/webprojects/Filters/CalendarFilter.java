@@ -12,6 +12,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * Redirects all requests without valid session to the login page.
+ * 
+ * @author harsicha
+ */
 @WebFilter(urlPatterns = {"/Calendar"})
 public class CalendarFilter implements Filter {
 
@@ -26,7 +31,6 @@ public class CalendarFilter implements Filter {
 		boolean loggedIn = session != null && session.getAttribute("user") != null;
 		
 		if (loggedIn) {
-			System.out.println("Login check for Calendar success!");
 			req.getRequestDispatcher("/Calendar").forward(req, res);
 		} else {
 			res.sendRedirect("/webcalendar/Login/login.jsp");
