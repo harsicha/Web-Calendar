@@ -23,6 +23,8 @@ import jakarta.servlet.annotation.WebServlet;
 
 /**
  * Servlet implementation class CalendarController
+ * The class implements GET and POST endpoints for storing and retrieving remindersfrom database
+ * @author harsicha
  */
 
 @WebServlet(description = "CalendarController", urlPatterns = {"/Calendar"} )
@@ -38,6 +40,9 @@ public class CalendarController extends HttpServlet {
     }
 
 	/**
+	 * Returns JSON data by mapping user object to JSON object.
+	 * The JSON data contains username and their reminders.
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,18 +51,18 @@ public class CalendarController extends HttpServlet {
 		HttpSession hs = request.getSession(false);
 		User user = (User) hs.getAttribute("user");
 		CalendarService service = new CalendarService();
-		boolean res = service.getReminder(user);
+		service.getReminder(user);
 		String userJsonString = new Gson().toJson(user);
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		//String msg = res ? SUCCESS_MSG : FAILURE_MSG;
-		//out.println(msg);
 		out.print(userJsonString);
 		out.flush();
 	}
 
 	/**
+	 * Receives reminder and date attributes from frontend which are then stored in database
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
